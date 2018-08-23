@@ -17,9 +17,10 @@ module BootstrapFlashHelper
 
   def flash_container(type, message)
     content_tag :div, class: "alert alert-#{type} alert-dismissable" do
-      button_tag type: "button", class: "close", data: { dismiss: "alert" } do
+      btn = button_tag type: "button", class: "close", data: { dismiss: "alert" }, 'aria-label' => 'Close alert' do
         "&times;".html_safe
-      end.safe_concat(message)
+      end
+      [message, btn].join('').html_safe
     end
   end
 end
